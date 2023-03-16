@@ -1,4 +1,4 @@
-module github.com/evmos/ethermint
+module github.com/onchainengineer/visca
 
 go 1.19
 

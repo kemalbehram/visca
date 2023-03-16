@@ -13,18 +13,18 @@ import (
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
 	"github.com/cosmos/cosmos-sdk/x/auth/ante"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/evmos/ethermint/app"
-	"github.com/evmos/ethermint/encoding"
-	"github.com/evmos/ethermint/ethereum/eip712"
-	"github.com/evmos/ethermint/tests"
-	"github.com/evmos/ethermint/types"
-	evmtypes "github.com/evmos/ethermint/x/evm/types"
+	"github.com/onchainengineer/visca/app"
+	"github.com/onchainengineer/visca/encoding"
+	"github.com/onchainengineer/visca/ethereum/eip712"
+	"github.com/onchainengineer/visca/tests"
+	"github.com/onchainengineer/visca/types"
+	evmtypes "github.com/onchainengineer/visca/x/evm/types"
 	"github.com/stretchr/testify/require"
 )
 
 // Testing Constants
 var (
-	chainId = "ethermint_9000-1"
+	chainId = "visca_9000-1"
 	ctx     = client.Context{}.WithTxConfig(
 		encoding.MakeConfig(app.ModuleBasics).TxConfig,
 	)

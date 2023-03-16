@@ -5,9 +5,9 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
-	"github.com/evmos/ethermint/app/ante"
-	"github.com/evmos/ethermint/tests"
-	evmtypes "github.com/evmos/ethermint/x/evm/types"
+	"github.com/onchainengineer/visca/app/ante"
+	"github.com/onchainengineer/visca/tests"
+	evmtypes "github.com/onchainengineer/visca/x/evm/types"
 )
 
 func (suite AnteTestSuite) TestEthSigVerificationDecorator() {

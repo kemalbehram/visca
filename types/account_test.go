@@ -12,10 +12,10 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 
-	cryptocodec "github.com/evmos/ethermint/crypto/codec"
-	"github.com/evmos/ethermint/crypto/ethsecp256k1"
-	ethermintcodec "github.com/evmos/ethermint/encoding/codec"
-	"github.com/evmos/ethermint/types"
+	cryptocodec "github.com/onchainengineer/visca/crypto/codec"
+	"github.com/onchainengineer/visca/crypto/ethsecp256k1"
+	viscacodec "github.com/onchainengineer/visca/encoding/codec"
+	"github.com/onchainengineer/visca/types"
 )
 
 func init() {
@@ -42,7 +42,7 @@ func (suite *AccountTestSuite) SetupTest() {
 	}
 
 	interfaceRegistry := codectypes.NewInterfaceRegistry()
-	ethermintcodec.RegisterInterfaces(interfaceRegistry)
+	viscacodec.RegisterInterfaces(interfaceRegistry)
 	suite.cdc = codec.NewProtoCodec(interfaceRegistry)
 }
 

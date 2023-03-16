@@ -1,12 +1,12 @@
 #!/bin/bash
 
 echo "prepare genesis: Run validate-genesis to ensure everything worked and that the genesis file is setup correctly"
-./ethermintd validate-genesis --home /ethermint
+./viscad validate-genesis --home /visca
 
-echo "starting ethermint node $ID in background ..."
-./ethermintd start \
---home /ethermint \
+echo "starting visca node $ID in background ..."
+./viscad start \
+--home /visca \
 --keyring-backend test
 
-echo "started ethermint node"
+echo "started visca node"
 tail -f /dev/null

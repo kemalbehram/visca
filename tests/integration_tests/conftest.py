@@ -1,12 +1,12 @@
 import pytest
 
-from .network import setup_ethermint, setup_geth
+from .network import setup_visca, setup_geth
 
 
 @pytest.fixture(scope="session")
-def ethermint(tmp_path_factory):
-    path = tmp_path_factory.mktemp("ethermint")
-    yield from setup_ethermint(path, 26650)
+def visca(tmp_path_factory):
+    path = tmp_path_factory.mktemp("visca")
+    yield from setup_visca(path, 26650)
 
 
 @pytest.fixture(scope="session")
@@ -16,18 +16,18 @@ def geth(tmp_path_factory):
 
 
 @pytest.fixture(
-    scope="session", params=["ethermint", "ethermint-ws"]
+    scope="session", params=["visca", "visca-ws"]
 )
-def ethermint_rpc_ws(request, ethermint):
+def visca_rpc_ws(request, visca):
     """
-    run on both ethermint and ethermint websocket
+    run on both visca and visca websocket
     """
     provider = request.param
-    if provider == "ethermint":
-        yield ethermint
-    elif provider == "ethermint-ws":
-        ethermint_ws = ethermint.copy()
-        ethermint_ws.use_websocket()
-        yield ethermint_ws
+    if provider == "visca":
+        yield visca
+    elif provider == "visca-ws":
+        visca_ws = visca.copy()
+        visca_ws.use_websocket()
+        yield visca_ws
     else:
         raise NotImplementedError

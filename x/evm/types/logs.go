@@ -1,18 +1,18 @@
-// Copyright 2021 Evmos Foundation
-// This file is part of Evmos' Ethermint library.
+// Copyright 2021 Visca Foundation
+// This file is part of Visca' Visca library.
 //
-// The Ethermint library is free software: you can redistribute it and/or modify
+// The Visca library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The Ethermint library is distributed in the hope that it will be useful,
+// The Visca library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the Ethermint library. If not, see https://github.com/evmos/ethermint/blob/main/LICENSE
+// along with the Visca library. If not, see https://github.com/onchainengineer/visca/blob/main/LICENSE
 package types
 
 import (
@@ -22,7 +22,7 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 
-	ethermint "github.com/evmos/ethermint/types"
+	visca "github.com/onchainengineer/visca/types"
 )
 
 // NewTransactionLogs creates a new NewTransactionLogs instance.
@@ -43,7 +43,7 @@ func NewTransactionLogsFromEth(hash common.Hash, ethlogs []*ethtypes.Log) Transa
 
 // Validate performs a basic validation of a GenesisAccount fields.
 func (tx TransactionLogs) Validate() error {
-	if ethermint.IsEmptyHash(tx.Hash) {
+	if visca.IsEmptyHash(tx.Hash) {
 		return fmt.Errorf("hash cannot be the empty %s", tx.Hash)
 	}
 
@@ -68,22 +68,22 @@ func (tx TransactionLogs) EthLogs() []*ethtypes.Log {
 
 // Validate performs a basic validation of an ethereum Log fields.
 func (log *Log) Validate() error {
-	if err := ethermint.ValidateAddress(log.Address); err != nil {
+	if err := visca.ValidateAddress(log.Address); err != nil {
 		return fmt.Errorf("invalid log address %w", err)
 	}
-	if ethermint.IsEmptyHash(log.BlockHash) {
+	if visca.IsEmptyHash(log.BlockHash) {
 		return fmt.Errorf("block hash cannot be the empty %s", log.BlockHash)
 	}
 	if log.BlockNumber == 0 {
 		return errors.New("block number cannot be zero")
 	}
-	if ethermint.IsEmptyHash(log.TxHash) {
+	if visca.IsEmptyHash(log.TxHash) {
 		return fmt.Errorf("tx hash cannot be the empty %s", log.TxHash)
 	}
 	return nil
 }
 
-// ToEthereum returns the Ethereum type Log from a Ethermint proto compatible Log.
+// ToEthereum returns the Ethereum type Log from a Visca proto compatible Log.
 func (log *Log) ToEthereum() *ethtypes.Log {
 	topics := make([]common.Hash, len(log.Topics))
 	for i, topic := range log.Topics {
@@ -112,7 +112,7 @@ func NewLogsFromEth(ethlogs []*ethtypes.Log) []*Log {
 	return logs
 }
 
-// LogsToEthereum casts the Ethermint Logs to a slice of Ethereum Logs.
+// LogsToEthereum casts the Visca Logs to a slice of Ethereum Logs.
 func LogsToEthereum(logs []*Log) []*ethtypes.Log {
 	var ethLogs []*ethtypes.Log //nolint: prealloc
 	for i := range logs {

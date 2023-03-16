@@ -153,7 +153,7 @@ The EVM uses state-reverting exceptions to handle errors. Such an exception will
 - `Snapshot()` creates a new snapshot and returns the identifier.
 - `RevertToSnapshot(rev)` undo all the modifications up to the snapshot identified as `rev`.
 
-Evmos adapted the [go-ethereum journal implementation](https://github.com/ethereum/go-ethereum/blob/master/core/state/journal.go#L39) to support this, it uses a list of journal logs to record all the state modification operations done so far,
+Visca adapted the [go-ethereum journal implementation](https://github.com/ethereum/go-ethereum/blob/master/core/state/journal.go#L39) to support this, it uses a list of journal logs to record all the state modification operations done so far,
 snapshot is consists of a unique id and an index in the log list, and to revert to a snapshot it just undo the journal logs after the snapshot index in reversed order.
 
 ### Ethereum Transaction logs
@@ -162,7 +162,7 @@ With `AddLog()` you can append the given ethereum `Log` to the list of Logs asso
 
 ## Keeper
 
-The EVM module `Keeper` grants access to the EVM module state and implements `statedb.Keeper` interface to support the `StateDB` implementation. The Keeper contains a store key that allows the DB to write to a concrete subtree of the multistore that is only accessible to the EVM module. Instead of using a trie and database for querying and persistence (the `StateDB` implementation on Ethermint), use the Cosmos `KVStore` (key-value store) and Cosmos SDK `Keeper` to facilitate state transitions.
+The EVM module `Keeper` grants access to the EVM module state and implements `statedb.Keeper` interface to support the `StateDB` implementation. The Keeper contains a store key that allows the DB to write to a concrete subtree of the multistore that is only accessible to the EVM module. Instead of using a trie and database for querying and persistence (the `StateDB` implementation on Visca), use the Cosmos `KVStore` (key-value store) and Cosmos SDK `Keeper` to facilitate state transitions.
 
 To support the interface functionality, it imports 4 module Keepers:
 
@@ -227,9 +227,9 @@ type GenesisState struct {
 
 The `GenesisAccount` type corresponds to an adaptation of the Ethereum `GenesisAccount` type. It defines an account to be initialized in the genesis state.
 
-Its main difference is that the one on Ethermint uses a custom `Storage` type that uses a slice instead of maps for the evm `State` (due to non-determinism), and that it doesn't contain the private key field.
+Its main difference is that the one on Visca uses a custom `Storage` type that uses a slice instead of maps for the evm `State` (due to non-determinism), and that it doesn't contain the private key field.
 
-It is also important to note that since the `auth` module on the Cosmos SDK manages the account state,  the `Address` field must correspond to an existing `EthAccount` that is stored in the `auth`'s module `Keeper` (i.e `AccountKeeper`). Addresses use the **[EIP55](https://eips.ethereum.org/EIPS/eip-55)** hex **[format](https://docs.evmos.org/users/technical_concepts/accounts.html#address-formats-for-clients)** on `genesis.json`.
+It is also important to note that since the `auth` module on the Cosmos SDK manages the account state,  the `Address` field must correspond to an existing `EthAccount` that is stored in the `auth`'s module `Keeper` (i.e `AccountKeeper`). Addresses use the **[EIP55](https://eips.ethereum.org/EIPS/eip-55)** hex **[format](https://docs.onchainengineer.org/users/technical_concepts/accounts.html#address-formats-for-clients)** on `genesis.json`.
 
 ```go
 type GenesisAccount struct {

@@ -1,18 +1,18 @@
-// Copyright 2021 Evmos Foundation
-// This file is part of Evmos' Ethermint library.
+// Copyright 2021 Visca Foundation
+// This file is part of Visca' Visca library.
 //
-// The Ethermint library is free software: you can redistribute it and/or modify
+// The Visca library is free software: you can redistribute it and/or modify
 // it under the terms of the GNU Lesser General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// The Ethermint library is distributed in the hope that it will be useful,
+// The Visca library is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 // GNU Lesser General Public License for more details.
 //
 // You should have received a copy of the GNU Lesser General Public License
-// along with the Ethermint library. If not, see https://github.com/evmos/ethermint/blob/main/LICENSE
+// along with the Visca library. If not, see https://github.com/onchainengineer/visca/blob/main/LICENSE
 package importer
 
 import (
@@ -27,12 +27,12 @@ import (
 
 // ChainContext implements Ethereum's core.ChainContext and consensus.Engine
 // interfaces. It is needed in order to apply and process Ethereum
-// transactions. There should only be a single implementation in Ethermint. For
-// the purposes of Ethermint, it should be support retrieving headers and
+// transactions. There should only be a single implementation in Visca. For
+// the purposes of Visca, it should be support retrieving headers and
 // consensus parameters from  the current blockchain to be used during
 // transaction processing.
 //
-// NOTE: Ethermint will distribute the fees out to validators, so the structure
+// NOTE: Visca will distribute the fees out to validators, so the structure
 // and functionality of this is a WIP and subject to change.
 type ChainContext struct {
 	Coinbase        common.Address
@@ -75,7 +75,7 @@ func (cc *ChainContext) GetHeader(_ common.Hash, number uint64) *ethtypes.Header
 // for returned the address of the validtor to receive any fees. This function
 // is only invoked if the given author in the ApplyTransaction call is nil.
 //
-// NOTE: Ethermint will distribute the fees out to validators, so the structure
+// NOTE: Visca will distribute the fees out to validators, so the structure
 // and functionality of this is a WIP and subject to change.
 func (cc *ChainContext) Author(_ *ethtypes.Header) (common.Address, error) {
 	return cc.Coinbase, nil

@@ -1,7 +1,7 @@
 {
   dotenv: '../../../scripts/.env',
-  'ethermint_9000-1': {
-    cmd: 'ethermintd',
+  'visca_9000-1': {
+    cmd: 'viscad',
     'start-flags': '--trace',
     config: {
       mempool: {

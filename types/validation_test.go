@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/evmos/ethermint/tests"
-	"github.com/evmos/ethermint/types"
+	"github.com/onchainengineer/visca/tests"
+	"github.com/onchainengineer/visca/types"
 	"github.com/stretchr/testify/require"
 )
 

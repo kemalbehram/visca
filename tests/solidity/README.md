@@ -10,17 +10,17 @@ Increasingly difficult tests are provided:
 
 ### Quick start
 
-**Prerequisite**: in the repo's root, run `make install` to install the `ethermintd` and `ethermintd` binaries. When done, come back to this directory.
+**Prerequisite**: in the repo's root, run `make install` to install the `viscad` and `viscad` binaries. When done, come back to this directory.
 
 **Prerequisite**: install the individual solidity packages. They're set up as individual reops in a yarn monorepo workspace. Install them all via `yarn install`.
 
-To run the tests, you can use the `test-helper.js` utility to test all suites under `ganache` or `ethermint` network. The `test-helper.js` will help you spawn an `ethermintd` process before running the tests.
+To run the tests, you can use the `test-helper.js` utility to test all suites under `ganache` or `visca` network. The `test-helper.js` will help you spawn an `viscad` process before running the tests.
 
-You can simply run `yarn test --network ethermint` to run all tests with ethermint network, or you can run `yarn test --network ganache` to use ganache shipped with truffle. In most cases, there two networks should produce identical test results.
+You can simply run `yarn test --network visca` to run all tests with visca network, or you can run `yarn test --network ganache` to use ganache shipped with truffle. In most cases, there two networks should produce identical test results.
 
-If you only want to run a few test cases, append the name of tests following by the command line. For example, use `yarn test --network ethermint basic` to run the `basic` test under `ethermint` network.
+If you only want to run a few test cases, append the name of tests following by the command line. For example, use `yarn test --network visca basic` to run the `basic` test under `visca` network.
 
-If you need to take more control, you can also run `ethermintd` using:
+If you need to take more control, you can also run `viscad` using:
 
 ```sh
 ./init-test-node.sh
@@ -32,9 +32,9 @@ You will now have three ethereum accounts unlocked in the test node:
 - `0xddd64b4712f7c8f1ace3c145c950339eddaf221d` (User 1)
 - `0x0f54f47bf9b8e317b214ccd6a7c3e38b893cd7f0` (user 2)
 
-Keep the terminal window open, go into any of the tests and run `yarn test-ethermint`. You should see `ethermintd` accepting transactions and producing blocks. You should be able to query for any transaction via:
+Keep the terminal window open, go into any of the tests and run `yarn test-visca`. You should see `viscad` accepting transactions and producing blocks. You should be able to query for any transaction via:
 
-- `ethermintd query tx <cosmos-sdk tx>`
+- `viscad query tx <cosmos-sdk tx>`
 - `curl localhost:8545 -H "Content-Type:application/json" -X POST --data '{"jsonrpc":"2.0","method":"eth_getTransactionByHash","params":["<ethereum tx>"],"id":1}'`
 
 From here, in your other available terminal,
@@ -44,7 +44,7 @@ When in doubt, you can also run the tests against a Ganache instance via `yarn t
 
 ### Test node
 
-The [`init-test-node.sh`](./init-test-node.sh) script sets up ethermint with the following accounts:
+The [`init-test-node.sh`](./init-test-node.sh) script sets up visca with the following accounts:
 
 - `ethm10jmp6sgh4cc6zt3e8gw05wavvejgr5pwtu750w` (Validator)
     - `0x7cB61D4117AE31a12E393a1Cfa3BaC666481D02E`
@@ -55,7 +55,7 @@ The [`init-test-node.sh`](./init-test-node.sh) script sets up ethermint with the
 
 Each with roughly 100 ETH available (1e18 photon).
 
-Running `ethermintd keys list --keyring-backend=test` should output:
+Running `viscad keys list --keyring-backend=test` should output:
 
 ```json
 [

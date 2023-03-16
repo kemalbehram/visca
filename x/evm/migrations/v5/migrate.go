@@ -4,9 +4,9 @@ import (
 	"github.com/cosmos/cosmos-sdk/codec"
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/evmos/ethermint/x/evm/types"
+	"github.com/onchainengineer/visca/x/evm/types"
 
-	v5types "github.com/evmos/ethermint/x/evm/migrations/v5/types"
+	v5types "github.com/onchainengineer/visca/x/evm/migrations/v5/types"
 )
 
 // MigrateStore migrates the x/evm module state from the consensus version 4 to
@@ -31,8 +31,8 @@ func MigrateStore(
 	extraEIPsBz := store.Get(types.ParamStoreKeyExtraEIPs)
 	cdc.MustUnmarshal(extraEIPsBz, &extraEIPs)
 
-	// revert ExtraEIP change for Evmos testnet
-	if ctx.ChainID() == "evmos_9000-4" {
+	// revert ExtraEIP change for Visca testnet
+	if ctx.ChainID() == "onchainengineer_9000-4" {
 		extraEIPs.EIPs = []int64{}
 	}
 

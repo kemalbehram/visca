@@ -8,15 +8,15 @@ import (
 	"github.com/cosmos/cosmos-sdk/client"
 	"github.com/cosmos/cosmos-sdk/simapp/params"
 	"github.com/ethereum/go-ethereum/crypto"
-	"github.com/evmos/ethermint/ethereum/eip712"
+	"github.com/onchainengineer/visca/ethereum/eip712"
 
 	cryptotypes "github.com/cosmos/cosmos-sdk/crypto/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/evmos/ethermint/crypto/ethsecp256k1"
+	"github.com/onchainengineer/visca/crypto/ethsecp256k1"
 
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	"github.com/evmos/ethermint/app"
-	"github.com/evmos/ethermint/encoding"
+	"github.com/onchainengineer/visca/app"
+	"github.com/onchainengineer/visca/encoding"
 
 	txtypes "github.com/cosmos/cosmos-sdk/types/tx"
 	"github.com/cosmos/cosmos-sdk/types/tx/signing"
@@ -367,7 +367,7 @@ func (suite *EIP712TestSuite) TestEIP712SignatureVerification() {
 				err = txBuilder.SetSignatures([]signing.SignatureV2{txSig}...)
 				suite.Require().NoError(err)
 
-				chainId := "ethermint_9000-1"
+				chainId := "visca_9000-1"
 				if tc.chainId != "" {
 					chainId = tc.chainId
 				}

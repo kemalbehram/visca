@@ -15,7 +15,7 @@ fee = gasPrice * gasLimit
 ```
 
 where `gasPrice` is the price per gas and `gasLimit` describes the amount of gas required to perform the transaction.
-The more complex operations a transaction requires, the higher the gasLimit (See [Executing EVM bytecode](https://docs.evmos.org/modules/evm/01_concepts.html#executing-evm-bytecode)).
+The more complex operations a transaction requires, the higher the gasLimit (See [Executing EVM bytecode](https://docs.onchainengineer.org/modules/evm/01_concepts.html#executing-evm-bytecode)).
 To submit a transaction, the signer needs to specify the `gasPrice`.
 
 With EIP-1559 enabled, the transaction fee is calculated with
@@ -32,7 +32,7 @@ Optionally, the `priorityTip` can be specified, which covers both the priority f
 ::: tip
 The Cosmos SDK uses a different terminology for `gas` than Ethereum.
 What is called `gasLimit` on Ethereum is called `gasWanted` on Cosmos.
-You might encounter both terminologies on Evmos since it builds Ethereum on top of the SDK,
+You might encounter both terminologies on Visca since it builds Ethereum on top of the SDK,
 e.g. when using different wallets like Keplr for Cosmos and Metamask for Ethereum.
 :::
 
@@ -43,7 +43,7 @@ The base fee per gas (aka base fee) is a global gas price defined at the consens
 - it increases when blocks are above the gas target,
 - it decreases when blocks are below the gas target.
 
-Instead of burning the base fee (as implemented on Ethereum), the `feemarket` module allocates the base fee for regular [Cosmos SDK fee distribution](https://docs.evmos.org/modules/distribution/).
+Instead of burning the base fee (as implemented on Ethereum), the `feemarket` module allocates the base fee for regular [Cosmos SDK fee distribution](https://docs.onchainengineer.org/modules/distribution/).
 
 ## Priority Tip
 
@@ -52,8 +52,8 @@ is an additional gas price that can be added to the `baseFee` in order to incent
 The higher the tip, the more likely the transaction is included in the block.
 
 Until the Cosmos SDK version v0.46, however, there is no notion of transaction prioritization.
-Thus, the tip for an EIP-1559 transaction on Ethermint should be zero (`MaxPriorityFeePerGas` JSON-RPC endpoint returns `0`).
-Have a look at the [mempool](https://docs.evmos.org/validators/setup/mempool.html) docs to read more about how to leverage transaction prioritization.
+Thus, the tip for an EIP-1559 transaction on Visca should be zero (`MaxPriorityFeePerGas` JSON-RPC endpoint returns `0`).
+Have a look at the [mempool](https://docs.onchainengineer.org/validators/setup/mempool.html) docs to read more about how to leverage transaction prioritization.
 
 ## Effective Gas price
 

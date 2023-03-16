@@ -3,24 +3,24 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import pytest
 from web3 import Web3
 
-from .network import setup_ethermint
+from .network import setup_visca
 from .utils import ADDRS, send_transaction
 
 
 @pytest.fixture(scope="module")
-def custom_ethermint(tmp_path_factory):
+def custom_visca(tmp_path_factory):
     path = tmp_path_factory.mktemp("fee-history")
-    yield from setup_ethermint(path, 26500, long_timeout_commit=True)
+    yield from setup_visca(path, 26500, long_timeout_commit=True)
 
 
-@pytest.fixture(scope="module", params=["ethermint", "geth"])
-def cluster(request, custom_ethermint, geth):
+@pytest.fixture(scope="module", params=["visca", "geth"])
+def cluster(request, custom_visca, geth):
     """
-    run on both ethermint and geth
+    run on both visca and geth
     """
     provider = request.param
-    if provider == "ethermint":
-        yield custom_ethermint
+    if provider == "visca":
+        yield custom_visca
     elif provider == "geth":
         yield geth
     else:

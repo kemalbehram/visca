@@ -5,10 +5,10 @@ import (
 
 	"github.com/cosmos/cosmos-sdk/testutil"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/evmos/ethermint/app"
-	"github.com/evmos/ethermint/encoding"
-	v4 "github.com/evmos/ethermint/x/feemarket/migrations/v4"
-	"github.com/evmos/ethermint/x/feemarket/types"
+	"github.com/onchainengineer/visca/app"
+	"github.com/onchainengineer/visca/encoding"
+	v4 "github.com/onchainengineer/visca/x/feemarket/migrations/v4"
+	"github.com/onchainengineer/visca/x/feemarket/types"
 	"github.com/stretchr/testify/require"
 )
 

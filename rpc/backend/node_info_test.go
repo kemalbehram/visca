@@ -8,9 +8,9 @@ import (
 	authtypes "github.com/cosmos/cosmos-sdk/x/auth/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/evmos/ethermint/crypto/ethsecp256k1"
-	"github.com/evmos/ethermint/rpc/backend/mocks"
-	ethermint "github.com/evmos/ethermint/types"
+	"github.com/onchainengineer/visca/crypto/ethsecp256k1"
+	"github.com/onchainengineer/visca/rpc/backend/mocks"
+	visca "github.com/onchainengineer/visca/types"
 	"github.com/spf13/viper"
 	tmrpcclient "github.com/tendermint/tendermint/rpc/client"
 )
@@ -28,7 +28,7 @@ func (suite *BackendTestSuite) TestRPCMinGasPrice() {
 				queryClient := suite.backend.queryClient.QueryClient.(*mocks.EVMQueryClient)
 				RegisterParamsWithoutHeaderError(queryClient, 1)
 			},
-			ethermint.DefaultGasPrice,
+			visca.DefaultGasPrice,
 			true,
 		},
 		{
@@ -37,7 +37,7 @@ func (suite *BackendTestSuite) TestRPCMinGasPrice() {
 				queryClient := suite.backend.queryClient.QueryClient.(*mocks.EVMQueryClient)
 				RegisterParamsWithoutHeader(queryClient, 1)
 			},
-			ethermint.DefaultGasPrice,
+			visca.DefaultGasPrice,
 			true,
 		},
 	}

@@ -7,11 +7,11 @@ import (
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/common/hexutil"
-	"github.com/evmos/ethermint/indexer"
-	"github.com/evmos/ethermint/rpc/backend/mocks"
-	rpctypes "github.com/evmos/ethermint/rpc/types"
-	ethermint "github.com/evmos/ethermint/types"
-	evmtypes "github.com/evmos/ethermint/x/evm/types"
+	"github.com/onchainengineer/visca/indexer"
+	"github.com/onchainengineer/visca/rpc/backend/mocks"
+	rpctypes "github.com/onchainengineer/visca/rpc/types"
+	visca "github.com/onchainengineer/visca/types"
+	evmtypes "github.com/onchainengineer/visca/x/evm/types"
 	abci "github.com/tendermint/tendermint/abci/types"
 	tmlog "github.com/tendermint/tendermint/libs/log"
 	tmrpctypes "github.com/tendermint/tendermint/rpc/core/types"
@@ -455,7 +455,7 @@ func (suite *BackendTestSuite) TestGetTransactionByTxIndex() {
 		registerMock func()
 		height       int64
 		index        uint
-		expTxResult  *ethermint.TxResult
+		expTxResult  *visca.TxResult
 		expPass      bool
 	}{
 		{
@@ -467,7 +467,7 @@ func (suite *BackendTestSuite) TestGetTransactionByTxIndex() {
 			},
 			0,
 			0,
-			&ethermint.TxResult{},
+			&visca.TxResult{},
 			false,
 		},
 	}
@@ -495,7 +495,7 @@ func (suite *BackendTestSuite) TestQueryTendermintTxIndexer() {
 		registerMock func()
 		txGetter     func(*rpctypes.ParsedTxs) *rpctypes.ParsedTx
 		query        string
-		expTxResult  *ethermint.TxResult
+		expTxResult  *visca.TxResult
 		expPass      bool
 	}{
 		{
@@ -508,7 +508,7 @@ func (suite *BackendTestSuite) TestQueryTendermintTxIndexer() {
 				return &rpctypes.ParsedTx{}
 			},
 			"",
-			&ethermint.TxResult{},
+			&visca.TxResult{},
 			false,
 		},
 	}

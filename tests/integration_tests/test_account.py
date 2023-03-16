@@ -5,8 +5,8 @@ from eth_account import Account
 from .utils import ADDRS, w3_wait_for_new_blocks
 
 
-def test_get_transaction_count(ethermint_rpc_ws, geth):
-    for p in [ethermint_rpc_ws, geth]:
+def test_get_transaction_count(visca_rpc_ws, geth):
+    for p in [visca_rpc_ws, geth]:
         w3 = p.w3
         blk = hex(w3.eth.block_number)
         sender = ADDRS["validator"]

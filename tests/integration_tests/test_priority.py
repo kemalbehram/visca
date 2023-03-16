@@ -2,16 +2,16 @@ import sys
 
 import pytest
 
-from .network import setup_ethermint
+from .network import setup_visca
 from .utils import ADDRS, KEYS, eth_to_bech32, sign_transaction, wait_for_new_blocks
 
 PRIORITY_REDUCTION = 1000000
 
 
 @pytest.fixture(scope="module")
-def custom_ethermint(tmp_path_factory):
+def custom_visca(tmp_path_factory):
     path = tmp_path_factory.mktemp("priority")
-    yield from setup_ethermint(path, 26800, long_timeout_commit=True)
+    yield from setup_visca(path, 26800, long_timeout_commit=True)
 
 
 def effective_gas_price(tx, base_fee):
@@ -35,14 +35,14 @@ def tx_priority(tx, base_fee):
         return (tx["gasPrice"] - base_fee) // PRIORITY_REDUCTION
 
 
-def test_priority(ethermint):
+def test_priority(visca):
     """
     test priorities of different tx types
 
     use a relatively large priority number to counter
     the effect of base fee change during the testing.
     """
-    w3 = ethermint.w3
+    w3 = visca.w3
     amount = 10000
     base_fee = w3.eth.get_block("latest").baseFeePerGas
 
@@ -120,8 +120,8 @@ def test_priority(ethermint):
     assert all(i1 > i2 for i1, i2 in zip(tx_indexes, tx_indexes[1:]))
 
 
-def test_native_tx_priority(ethermint):
-    cli = ethermint.cosmos_cli()
+def test_native_tx_priority(visca):
+    cli = visca.cosmos_cli()
     base_fee = cli.query_base_fee()
     print("base_fee", base_fee)
     test_cases = [

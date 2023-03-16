@@ -6,12 +6,12 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/evmos/ethermint/app/ante"
-	"github.com/evmos/ethermint/server/config"
-	"github.com/evmos/ethermint/tests"
-	ethermint "github.com/evmos/ethermint/types"
-	"github.com/evmos/ethermint/x/evm/statedb"
-	evmtypes "github.com/evmos/ethermint/x/evm/types"
+	"github.com/onchainengineer/visca/app/ante"
+	"github.com/onchainengineer/visca/server/config"
+	"github.com/onchainengineer/visca/tests"
+	visca "github.com/onchainengineer/visca/types"
+	"github.com/onchainengineer/visca/x/evm/statedb"
+	evmtypes "github.com/onchainengineer/visca/x/evm/types"
 
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
 )
@@ -181,7 +181,7 @@ func (suite AnteTestSuite) TestEthGasConsumeDecorator() {
 	tx2.From = addr.Hex()
 	tx2Priority := int64(1)
 
-	tx3GasLimit := ethermint.BlockGasLimit(suite.ctx) + uint64(1)
+	tx3GasLimit := visca.BlockGasLimit(suite.ctx) + uint64(1)
 	tx3 := evmtypes.NewTxContract(suite.app.EvmKeeper.ChainID(), 1, big.NewInt(10), tx3GasLimit, gasPrice, nil, nil, nil, &ethtypes.AccessList{{Address: addr, StorageKeys: nil}})
 
 	dynamicFeeTx := evmtypes.NewTxContract(suite.app.EvmKeeper.ChainID(), 1, big.NewInt(10), tx2GasLimit,

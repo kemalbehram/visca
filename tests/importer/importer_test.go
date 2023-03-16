@@ -9,15 +9,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/evmos/ethermint/app"
+	"github.com/onchainengineer/visca/app"
 
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	evmkeeper "github.com/evmos/ethermint/x/evm/keeper"
-	"github.com/evmos/ethermint/x/evm/statedb"
+	evmkeeper "github.com/onchainengineer/visca/x/evm/keeper"
+	"github.com/onchainengineer/visca/x/evm/statedb"
 
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/consensus/ethash"
@@ -28,7 +28,7 @@ import (
 	ethparams "github.com/ethereum/go-ethereum/params"
 	ethrlp "github.com/ethereum/go-ethereum/rlp"
 
-	"github.com/evmos/ethermint/crypto/ethsecp256k1"
+	"github.com/onchainengineer/visca/crypto/ethsecp256k1"
 	"github.com/tendermint/tendermint/abci/types"
 	"github.com/tendermint/tendermint/crypto/tmhash"
 	tmproto "github.com/tendermint/tendermint/proto/tendermint/types"
@@ -52,7 +52,7 @@ func init() {
 type ImporterTestSuite struct {
 	suite.Suite
 
-	app *app.EthermintApp
+	app *app.ViscaApp
 	ctx sdk.Context
 }
 
@@ -66,7 +66,7 @@ func (suite *ImporterTestSuite) DoSetupTest(t require.TestingT) {
 	consAddress := sdk.ConsAddress(priv.PubKey().Address())
 	suite.ctx = suite.app.BaseApp.NewContext(checkTx, tmproto.Header{
 		Height:          1,
-		ChainID:         "ethermint_9000-1",
+		ChainID:         "visca_9000-1",
 		Time:            time.Now().UTC(),
 		ProposerAddress: consAddress.Bytes(),
 		Version: tmversion.Consensus{

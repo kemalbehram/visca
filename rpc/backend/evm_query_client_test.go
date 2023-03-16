@@ -11,10 +11,10 @@ import (
 	errortypes "github.com/cosmos/cosmos-sdk/types/errors"
 	grpctypes "github.com/cosmos/cosmos-sdk/types/grpc"
 	"github.com/ethereum/go-ethereum/common"
-	"github.com/evmos/ethermint/rpc/backend/mocks"
-	rpc "github.com/evmos/ethermint/rpc/types"
-	"github.com/evmos/ethermint/tests"
-	evmtypes "github.com/evmos/ethermint/x/evm/types"
+	"github.com/onchainengineer/visca/rpc/backend/mocks"
+	rpc "github.com/onchainengineer/visca/rpc/types"
+	"github.com/onchainengineer/visca/tests"
+	evmtypes "github.com/onchainengineer/visca/x/evm/types"
 	mock "github.com/stretchr/testify/mock"
 	"github.com/stretchr/testify/require"
 	"google.golang.org/grpc"
@@ -23,9 +23,9 @@ import (
 	"google.golang.org/grpc/status"
 )
 
-// QueryClient defines a mocked object that implements the ethermint GRPC
+// QueryClient defines a mocked object that implements the visca GRPC
 // QueryClient interface. It allows for performing QueryClient queries without having
-// to run a ethermint GRPC server.
+// to run a visca GRPC server.
 //
 // To use a mock method it has to be registered in a given test.
 var _ evmtypes.QueryClient = &mocks.EVMQueryClient{}

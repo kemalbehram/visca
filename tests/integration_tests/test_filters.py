@@ -5,7 +5,7 @@ from eth_abi import abi
 from hexbytes import HexBytes
 from web3 import Web3
 
-from .network import setup_custom_ethermint, setup_ethermint
+from .network import setup_custom_visca, setup_visca
 from .utils import (
     ADDRS,
     CONTRACTS,
@@ -17,37 +17,37 @@ from .utils import (
 
 
 @pytest.fixture(scope="module")
-def custom_ethermint(tmp_path_factory):
+def custom_visca(tmp_path_factory):
     path = tmp_path_factory.mktemp("filters")
-    yield from setup_ethermint(path, 26200, long_timeout_commit=True)
+    yield from setup_visca(path, 26200, long_timeout_commit=True)
 
 
 @pytest.fixture(scope="module")
-def ethermint_indexer(tmp_path_factory):
+def visca_indexer(tmp_path_factory):
     path = tmp_path_factory.mktemp("indexer")
-    yield from setup_custom_ethermint(
+    yield from setup_custom_visca(
         path, 26660, Path(__file__).parent / "configs/enable-indexer.jsonnet"
     )
 
 
 @pytest.fixture(
-    scope="module", params=["ethermint", "geth", "ethermint-ws", "enable-indexer"]
+    scope="module", params=["visca", "geth", "visca-ws", "enable-indexer"]
 )
-def cluster(request, custom_ethermint, ethermint_indexer, geth):
+def cluster(request, custom_visca, visca_indexer, geth):
     """
-    run on both ethermint and geth
+    run on both visca and geth
     """
     provider = request.param
-    if provider == "ethermint":
-        yield custom_ethermint
+    if provider == "visca":
+        yield custom_visca
     elif provider == "geth":
         yield geth
-    elif provider == "ethermint-ws":
-        ethermint_ws = custom_ethermint.copy()
-        ethermint_ws.use_websocket()
-        yield ethermint_ws
+    elif provider == "visca-ws":
+        visca_ws = custom_visca.copy()
+        visca_ws.use_websocket()
+        yield visca_ws
     elif provider == "enable-indexer":
-        yield ethermint_indexer
+        yield visca_indexer
     else:
         raise NotImplementedError
 
